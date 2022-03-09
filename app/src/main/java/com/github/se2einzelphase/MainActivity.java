@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +24,24 @@ public class MainActivity extends AppCompatActivity {
 
         textInput = findViewById(R.id.textInput);
         responseView = findViewById(R.id.responseView);
+    }
+
+    private static boolean isPrime(int n) {
+
+        if (n <= 1) return false;
+
+        return IntStream.rangeClosed(2, n/2).noneMatch(i -> n%i == 0);
+    }
+    public void sortFilterPrime(View view) {
+        String content = textInput.getText()
+                .chars()
+                .filter(n -> !isPrime(Character.getNumericValue(n)))
+                .sorted()
+                .collect(StringBuilder::new,
+                         StringBuilder::appendCodePoint,
+                         StringBuilder::append)
+                .toString();
+        runOnUiThread(() -> responseView.setText(content));
     }
 
     public void sendNumber(View view) {
