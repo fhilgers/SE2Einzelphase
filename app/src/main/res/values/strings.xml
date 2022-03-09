@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">SE2 Einzelphase</string>
+    <string name="app_name">NetworkTest</string>
+    <string name="greeter">Gib deine Matrikelnummer ein</string>
+    <string name="response_sample">Antwort vom Server</string>
+    <string name="submit_button">ABSCHICKEN</string>
+    <string name="textfield_hint">Matrikelnummer</string>
 </resources>
